@@ -1,0 +1,221 @@
+{
+  "name": "Candidate Duplicate Checker",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "79504a16-56e7-475b-b81e-043e7b977f21",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f665762e-d6a8-4e6b-ac79-68d1c372fca7",
+              "name": "email",
+              "value": "new.candidate999@example.com",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "11fdcb2e-33c4-47bc-a069-175114bcef90",
+      "name": "Candidate Input"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT\n    COUNT(*) AS match_count\nFROM people\nWHERE email = '{{ $json.email }}';",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.5,
+      "position": [
+        448,
+        0
+      ],
+      "id": "cbd5dce0-717a-48bd-9ee0-b0ddf3615b51",
+      "name": "Check Candidate in MySQL",
+      "credentials": {
+        "mySql": {
+          "id": "gE1x6uyYZffwrxf1",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "33f23fd1-e2e9-49e9-ad73-540d69a12a3c",
+              "leftValue": "={{ $json.match_count }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        672,
+        0
+      ],
+      "id": "6b704b86-b01e-47d3-8b8c-d779351eb34f",
+      "name": "Duplicate?"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f8fb6a1f-3065-4803-a570-cae940b59c44",
+              "name": "status",
+              "value": "DUPLICATE",
+              "type": "string"
+            },
+            {
+              "id": "ea7804df-e358-4157-99a1-f8728d736cec",
+              "name": "message",
+              "value": "Candidate already exists in database",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        896,
+        -96
+      ],
+      "id": "03f904e4-1da2-4c83-b908-d5d8d59a2713",
+      "name": "Duplicate Found"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd847704-8ccc-4837-881c-1f90ab4d2640",
+              "name": "status",
+              "value": "NOT_DUPLICATE",
+              "type": "string"
+            },
+            {
+              "id": "31818256-0f35-4865-b991-4e80e6a12375",
+              "name": "message",
+              "value": "Candidate not found in database",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        784,
+        16
+      ],
+      "id": "e946c8c4-9cee-436a-a298-96d14f4f3417",
+      "name": "Not Duplicate"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Candidate Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Candidate Input": {
+      "main": [
+        [
+          {
+            "node": "Check Candidate in MySQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Candidate in MySQL": {
+      "main": [
+        [
+          {
+            "node": "Duplicate?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Duplicate?": {
+      "main": [
+        [
+          {
+            "node": "Duplicate Found",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Not Duplicate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "852201dc-b058-43cf-9ab0-522560ee3114",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "935d428ca2312fe127366922598c992fdd40e3f07fcb9599b3a24571eec94055"
+  },
+  "nodeGroups": [],
+  "id": "zTx27M1fYDWfYHaS",
+  "tags": []
+}
