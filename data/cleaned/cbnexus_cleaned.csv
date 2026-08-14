@@ -1,0 +1,31 @@
+Name,Phone Number,City,Verified,Projects Completed,name_normalized,phone_normalized,city_normalized,verified_normalized
+Rohit Nair,9000000268,Gurgaon,Y,13,rohit nair,9000000268,gurgaon,True
+RITU SHARMA,9000000146,Noida ,yes,15,ritu sharma,9000000146,noida,True
+Priya Saxena,919000000231,New Delhi,No,12,priya saxena,9000000231,delhi,False
+Arjun Mehta,+91-9000000131,Noida,No,9,arjun mehta,9000000131,noida,False
+Nikhil Mehta,+91-9000000104,pune,Y,10,nikhil mehta,9000000104,pune,True
+RAHUL MALHOTRA,919000000260,Delhi NCR,No,4,rahul malhotra,9000000260,delhi ncr,False
+Deepak Mehta,9000000116,Noida,yes,11,deepak mehta,9000000116,noida,True
+SAHIL MALHOTRA,9000000143,Noida,N,0,sahil malhotra,9000000143,noida,False
+Shreya Gupta,+91-9000000227,NOIDA,yes,13,shreya gupta,9000000227,noida,True
+Priya Singh,9000000287,gurugram ,Y,3,priya singh,9000000287,gurgaon,True
+Varun Jain,919000000263,Pune,yes,14,varun jain,9000000263,pune,True
+Tanvi Agarwal,919000000148,Pune,N,3,tanvi agarwal,9000000148,pune,False
+KARAN BHATIA,9000000211,NOIDA,yes,2,karan bhatia,9000000211,noida,True
+Arjun Mishra,919000000106,new delhi,No,10,arjun mishra,9000000106,delhi,False
+Isha Kapoor,+91-9000000295,New Delhi,yes,6,isha kapoor,9000000295,delhi,True
+Isha Chopra,919000000138,pune,No,7,isha chopra,9000000138,pune,False
+MEERA BHATIA,919000000223,Delhi,No,4,meera bhatia,9000000223,delhi,False
+Vikram Saxena,9000000113,Gurgaon,No,15,vikram saxena,9000000113,gurgaon,False
+Rahul Chopra,9000000137,Noida ,N,10,rahul chopra,9000000137,noida,False
+Tanvi Gupta,9000000254,Bengaluru,No,14,tanvi gupta,9000000254,bengaluru,False
+VARUN SAXENA,919000000170,GURGAON,Y,1,varun saxena,9000000170,gurgaon,True
+Sneha Chopra,+91-9000000162,pune,N,14,sneha chopra,9000000162,pune,False
+DEEPAK NAIR,919000000296,Bengaluru,Yes,2,deepak nair,9000000296,bengaluru,True
+Gaurav Mehta,9000000133,Bengaluru,N,1,gaurav mehta,9000000133,bengaluru,False
+Neha Bhatia,9000000273,PUNE,No,10,neha bhatia,9000000273,pune,False
+Arjun Mehta,9000000272,Noida,Yes,14,arjun mehta,9000000272,noida,True
+MANISH BHATIA,919000000161,Noida ,Yes,5,manish bhatia,9000000161,noida,True
+DIVYA CHOPRA,9000000111,NOIDA,N,5,divya chopra,9000000111,noida,False
+Karan Chopra,919000000245,pune,N,10,karan chopra,9000000245,pune,False
+Vikram Mehta,+91-9000000261,PUNE,Y,2,vikram mehta,9000000261,pune,True
