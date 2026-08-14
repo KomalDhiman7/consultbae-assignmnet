@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Audio Submissions</title>
+</head>
+
+<body>
+
+<h1>Audio Submissions</h1>
+
+<a href="/">
+    Submit New Audio
+</a>
+
+<br><br>
+
+<table border="1" cellpadding="8">
+
+<tr>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Audio</th>
+    <th>Duration (sec)</th>
+    <th>Sample Rate (kHz)</th>
+    <th>Bitrate (kbps)</th>
+    <th>Loudness (dB)</th>
+    <th>Created</th>
+</tr>
+
+{% for item in submissions %}
+
+<tr>
+
+    <td>{{ item.name }}</td>
+
+    <td>{{ item.phone }}</td>
+
+    <td>
+        <audio controls>
+            <source src="/audio/{{ item.audio_filename }}">
+        </audio>
+    </td>
+
+    <td>
+        {{ "%.2f"|format(item.duration_seconds) }}
+    </td>
+
+    <td>
+        {{ "%.2f"|format(item.sample_rate_khz) }}
+    </td>
+
+    <td>
+        {{ "%.2f"|format(item.bitrate_kbps) }}
+    </td>
+
+    <td>
+        {{ "%.2f"|format(item.loudness_db) }}
+    </td>
+
+    <td>
+        {{ item.created_at }}
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>
